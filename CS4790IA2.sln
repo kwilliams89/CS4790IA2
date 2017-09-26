@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS4790IA1", "CS4790IA1\CS4790IA1.csproj", "{B33125E1-000C-4213-A7A7-8AA46A1D3345}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS4790IA1", "CS4790IA2\CS4790IA2.csproj", "{B33125E1-000C-4213-A7A7-8AA46A1D3345}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace CS4790IA1
+namespace CS4790IA2
 {
     public class FilterConfig
     {

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace CS4790IA1
+namespace CS4790IA2
 {
     public class RouteConfig
     {
