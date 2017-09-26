@@ -61,4 +61,19 @@ namespace CS4790IA2.Models
             public DbSet<Course> Courses { get; set; }
             public DbSet<Section> Sections { get; set; }
         }
+
+
+    public class BasicSchool
+    {
+        public static CourseSection getCourseAndSections(int? id)
+        {
+            BasicSchoolDbContext db = new BasicStudentDbContext();
+            CourseSection courseSection = new CourseSection();
+
+            var sections = db.sections.Where(s => s.courseNumber == courseSection.course.courseNumber);
+            courseSection.sections = sections.ToList();
+
+            return courseSection;
+        }
+    }
 }
