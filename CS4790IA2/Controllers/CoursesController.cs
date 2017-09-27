@@ -12,12 +12,11 @@ namespace CS4790IA2.Controllers
 {
     public class CoursesController : Controller
     {
-        private BasicSchoolDbContext db = new BasicSchoolDbContext();
 
         // GET: Courses
         public ActionResult Index()
         {
-            return View(db.Courses.ToList());
+            return View(Repository.getCourses());
         }
 
         // GET: Courses/Details/5
@@ -27,7 +26,7 @@ namespace CS4790IA2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = db.Courses.Find(id);
+            Course course = Repository.getCourseDetails(id);
             if (course == null)
             {
                 return HttpNotFound();

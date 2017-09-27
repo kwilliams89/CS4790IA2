@@ -15,6 +15,22 @@ namespace CS4790IA2.Models
             return courseSection;
         }
 
+        public static List<Course> getCourses()
+        {
+            return BasicSchool.getCourses();
+        }
+
+        public static Course getCourseDetails(int? id)
+        {
+            return BasicSchool.getCourseDetails(id);
+        }
+
+        public static void deleteCourse(Course course)
+        {
+            BasicSchool.deleteCourse(course);
+        }
+    }
+
         public class CourseSection
         {
             public CourseSection()
@@ -24,5 +40,5 @@ namespace CS4790IA2.Models
             public Course course { get; set; }
             public List<Section> sections { get; set; }
         }
-    }
+
 }

@@ -1,6 +1,11 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace CS4790IA2.Models
 {
@@ -67,13 +72,36 @@ namespace CS4790IA2.Models
     {
         public static CourseSection getCourseAndSections(int? id)
         {
-            BasicSchoolDbContext db = new BasicStudentDbContext();
+            BasicSchoolDbContext db = new BasicSchoolDbContext();
             CourseSection courseSection = new CourseSection();
 
-            var sections = db.sections.Where(s => s.courseNumber == courseSection.course.courseNumber);
+            var sections = db.Sections.Where(s => s.CourseNumber == courseSection.course.CourseNumber);
             courseSection.sections = sections.ToList();
 
             return courseSection;
         }
+
+        public static void deleteCourse(Course course)
+        {
+            BasicSchoolDbContext db = new BasicSchoolDbContext();
+            db.Entry(course).State = EntityState.Deleted;
+            db.Courses.Remove(course);
+            db.SaveChanges();
+
+        }
+
+        public static List<Course> getCourses()
+        {
+            BasicSchoolDbContext db = new BasicSchoolDbContext();
+            return db.Courses.ToList();
+        }
+
+        public static Course getCourseDetails(int? id)
+        {
+            BasicSchoolDbContext db = new BasicSchoolDbContext();
+            return db.Courses.Find(id);
+        }
+
+
     }
 }
