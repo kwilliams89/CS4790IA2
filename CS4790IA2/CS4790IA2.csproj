@@ -185,6 +185,7 @@
     <Content Include="Views\Sections\Details.cshtml" />
     <Content Include="Views\Sections\Edit.cshtml" />
     <Content Include="Views\Sections\Index.cshtml" />
+    <Content Include="Views\Courses\CSDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

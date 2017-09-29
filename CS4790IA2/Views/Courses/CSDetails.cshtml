@@ -1,0 +1,100 @@
+﻿@model CS4790IA2.Models.CourseSection
+
+@{
+    ViewBag.Title = "CSDetails";
+}
+
+<h2>Course Details with Sections</h2>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.course.CourseNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course.CourseNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course.CourseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course.CreditHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course.CreditHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course.MaxEnrollment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course.MaxEnrollment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.course.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<h4>Course Sections</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.sections[0].SectionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sections[0].SectionNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sections[0].CourseNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sections[0].SectionDays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sections[0].SectionTime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.sections)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionTime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+

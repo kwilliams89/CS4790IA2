@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel;
 
 namespace CS4790IA2.Models
 {
@@ -73,6 +71,7 @@ namespace CS4790IA2.Models
         {
             BasicSchoolDbContext db = new BasicSchoolDbContext();
             CourseSection courseSection = new CourseSection();
+            courseSection.course = getCourse(id);
 
             var sections = db.Sections.Where(s => s.CourseNumber == courseSection.course.CourseNumber);
             courseSection.sections = sections.ToList();
