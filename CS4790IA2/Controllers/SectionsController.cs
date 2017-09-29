@@ -17,7 +17,7 @@ namespace CS4790IA2.Controllers
         // GET: Sections
         public ActionResult Index()
         {
-            return View(db.Sections.ToList());
+            return View(Repository.getSections());
         }
 
         // GET: Sections/Details/5
@@ -27,7 +27,7 @@ namespace CS4790IA2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Section section = db.Sections.Find(id);
+            Section section = Repository.getSection(id);
             if (section == null)
             {
                 return HttpNotFound();
@@ -50,8 +50,7 @@ namespace CS4790IA2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Sections.Add(section);
-                db.SaveChanges();
+                Repository.createSection(section);
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +64,7 @@ namespace CS4790IA2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Section section = db.Sections.Find(id);
+            Section section = Repository.getSection(id);
             if (section == null)
             {
                 return HttpNotFound();
@@ -82,8 +81,7 @@ namespace CS4790IA2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(section).State = EntityState.Modified;
-                db.SaveChanges();
+                Repository.editSection(section);
                 return RedirectToAction("Index");
             }
             return View(section);
@@ -96,7 +94,7 @@ namespace CS4790IA2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Section section = db.Sections.Find(id);
+            Section section = Repository.getSection(id);
             if (section == null)
             {
                 return HttpNotFound();
@@ -109,9 +107,8 @@ namespace CS4790IA2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Section section = db.Sections.Find(id);
-            db.Sections.Remove(section);
-            db.SaveChanges();
+            Section section = Repository.getSection(id);
+            Repository.deleteSection(section);
             return RedirectToAction("Index");
         }
 

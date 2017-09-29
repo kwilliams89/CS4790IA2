@@ -12,6 +12,7 @@ namespace CS4790IA2.Controllers
 {
     public class CoursesController : Controller
     {
+        private BasicSchoolDbContext db = new BasicSchoolDbContext();
 
         // GET: Courses
         public ActionResult Index()
@@ -49,8 +50,7 @@ namespace CS4790IA2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Courses.Add(course);
-                db.SaveChanges();
+                Repository.createCourse(course);
                 return RedirectToAction("Index");
             }
 
@@ -64,7 +64,7 @@ namespace CS4790IA2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = db.Courses.Find(id);
+            Course course = Repository.getCourse(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -81,8 +81,7 @@ namespace CS4790IA2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(course).State = EntityState.Modified;
-                db.SaveChanges();
+                Repository.editCourse(course);
                 return RedirectToAction("Index");
             }
             return View(course);
@@ -95,7 +94,7 @@ namespace CS4790IA2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = db.Courses.Find(id);
+            Course course = Repository.getCourse(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -108,9 +107,8 @@ namespace CS4790IA2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Course course = db.Courses.Find(id);
-            db.Courses.Remove(course);
-            db.SaveChanges();
+            Course course = Repository.getCourse(id);
+            Repository.deleteCourse(course);
             return RedirectToAction("Index");
         }
 
